@@ -51,6 +51,23 @@ def test_mixed_sequence(sa):
         [6, 6, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]
     ]
 
+def test_replace_555_with_666(sa):
+    input_messages = [
+        [1, 5, 5, 5, 2, 3],
+        [5, 5, 5],
+        [4, 5, 5, 5, 5, 5, 6],
+        [5, 5],
+        [1, 2, 3]
+    ]
+    expected_chunks = [
+        [1, 6, 6, 6, 2, 3, 1, 2, 1, 2, 1, 2],
+        [6, 6, 6, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+        [4, 6, 6, 6, 6, 6, 6, 2, 1, 2, 1, 2],
+        [5, 5, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],
+        [1, 2, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+    ]
+    result = sa.split_massages(input_messages)
+    assert result == expected_chunks
 
 
 
